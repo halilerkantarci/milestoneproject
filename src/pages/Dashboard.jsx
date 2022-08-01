@@ -18,9 +18,9 @@ const Dashboard = () => {
         )}
       </div>
 
-      <Grid container spacing={2}>
+      {/* <Grid container spacing={2}>
         <Grid item xs={8}></Grid>
-      </Grid>
+      </Grid> */}
     </Box>
   );
 };

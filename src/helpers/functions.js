@@ -14,7 +14,7 @@ export const AddUser = (info) => {
 };
 
 export const useFetch = () => {
-  const [isLoading, setIsLoading] = useState();
+  const [isLoading, setIsLoading] = useState(true);
   const [contentList, setContentList] = useState();
   useEffect(() => {
     const db = getDatabase(app);
