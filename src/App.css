@@ -1,0 +1,8 @@
+.image {
+  background-image: "url(https://picsum.photos/1600/900)";
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  padding-top: 40px;
+}
