@@ -9,18 +9,21 @@ import NewBlog from "../pages/NewBlog";
 import Profile from "../pages/Profile";
 import Register from "../pages/Register";
 import PrivateRouter from "./PrivateRouter";
+import { useNavigate } from "react-router-dom";
 
 const initialValues = { title: "", img: "", content: "" };
 
 const AppRouter = () => {
+  const navigate = useNavigate();
   const [info, setInfo] = useState(initialValues);
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     setInfo(initialValues);
     AddUser(info);
+    navigate("/");
   };
   return (
-    <BrowserRouter>
+    <>
       <Navbar />
       <Routes>
         <Route path="/" element={<Dashboard />} />
@@ -42,7 +45,7 @@ const AppRouter = () => {
         />
         <Route path="logout" element={<Login />} />
       </Routes>
-    </BrowserRouter>
+    </>
   );
 };
 

@@ -112,9 +112,9 @@ const Navbar = () => {
             variant="h5"
             noWrap
             component="a"
-            href="/"
+            onClick={() => navigate("/")}
             sx={{
-              mr: 2,
+              mr: 18,
               display: "flex",
               // flexGrow: { xs: "none" },
               fontFamily: "monospace",
@@ -124,7 +124,7 @@ const Navbar = () => {
               textDecoration: "none",
             }}
           >
-            {`--- <gultekin/> Blog ---`}
+            {`--- <erkantarci/> Blog ---`}
           </Typography>
           {/* <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}></Box> */}
 

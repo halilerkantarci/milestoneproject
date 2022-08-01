@@ -1,6 +1,7 @@
 import app from "./firebase";
 import { getDatabase, ref, push, set, onValue } from "firebase/database";
 import { useEffect, useState } from "react";
+import { getAuth } from "firebase/auth";
 
 export const AddUser = (info) => {
   const db = getDatabase(app);
@@ -32,3 +33,18 @@ export const useFetch = () => {
   }, []);
   return { isLoading, contentList };
 };
+
+// const auth = getAuth();
+// export const getInfo = () => {
+//   const [email, setEmail] = useState();
+//   const user = auth.currentUser;
+//   if (user !== null) {
+//     // The user object has basic properties such as display name, email, etc.
+//     setEmail(user.email);
+
+//     // The user's ID, unique to the Firebase project. Do NOT use
+//     // this value to authenticate with your backend server, if
+//     // you have one. Use User.getToken() instead.
+//   }
+//   return { email };
+// };

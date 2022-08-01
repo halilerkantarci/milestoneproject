@@ -3,9 +3,11 @@ import React from "react";
 import BlogCard from "../components/BlogCard";
 import Box from "@mui/material/Box";
 import { useFetch } from "../helpers/functions";
+import { getInfo } from "../helpers/firebase";
 
 const Dashboard = () => {
   const { isLoading, contentList } = useFetch();
+  const { email } = getInfo();
   return (
     <Box sx={{ flexGrow: 1 }}>
       <div className="d-flex justify-content-center flex-wrap">
@@ -14,7 +16,9 @@ const Dashboard = () => {
             <span className="sr-only">Loading...</span>
           </div>
         ) : (
-          contentList?.map((list, index) => <BlogCard key={index} {...list} />)
+          contentList?.map((list, index) => (
+            <BlogCard key={index} {...list} email={email} />
+          ))
         )}
       </div>
 
