@@ -31,6 +31,7 @@ const hover = {
 const Navbar = () => {
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  console.log(currentUser);
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);

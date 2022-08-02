@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { AddUser } from "../helpers/functions";
@@ -10,17 +10,22 @@ import Profile from "../pages/Profile";
 import Register from "../pages/Register";
 import PrivateRouter from "./PrivateRouter";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
 
 const initialValues = { title: "", img: "", content: "" };
 
 const AppRouter = () => {
+  const { currentUser } = useContext(AuthContext);
+  console.log(currentUser.email, "approuter");
   const navigate = useNavigate();
   const [email, setEmail] = useState();
   const [info, setInfo] = useState(initialValues);
   const handleSubmit = (e) => {
     // e.preventDefault();
+
+    AddUser(info, currentUser.email);
     setInfo(initialValues);
-    AddUser(info, email);
+
     navigate("/");
   };
   return (
