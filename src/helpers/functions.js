@@ -3,7 +3,7 @@ import { getDatabase, ref, push, set, onValue } from "firebase/database";
 import { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 
-export const AddUser = (info) => {
+export const AddUser = (info, email) => {
   const db = getDatabase(app);
   const userRef = ref(db, "users/");
   const newUserRef = push(userRef);
@@ -11,8 +11,18 @@ export const AddUser = (info) => {
     title: info.title,
     img: info.img,
     content: info.content,
+    email: email,
   });
 };
+
+// export const AddUser1 = (email) => {
+//   const db = getDatabase(app);
+//   const userRef = ref(db, "users/");
+//   const newUserRef = push(userRef);
+//   set(newUserRef, {
+//     email: email.email,
+//   });
+// };
 
 export const useFetch = () => {
   const [isLoading, setIsLoading] = useState(true);

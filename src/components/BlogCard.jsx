@@ -17,7 +17,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Container, dividerClasses } from "@mui/material";
 import { alignPropType } from "react-bootstrap/esm/types";
 import MarkChatReadIcon from "@mui/icons-material/MarkChatRead";
-import { signIn } from "../helpers/firebase";
+import { getInfo, signIn } from "../helpers/firebase";
 import { BlogContext } from "../contexts/BlogContext";
 import { useContext } from "react";
 
@@ -33,6 +33,8 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function RecipeReviewCard({ title, img, content, email }) {
+  // const { email } = getInfo();
+
   const [expanded, setExpanded] = React.useState(false);
   // const { email } = useContext(BlogContext);
   // console.log(email);

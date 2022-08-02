@@ -15,11 +15,12 @@ const initialValues = { title: "", img: "", content: "" };
 
 const AppRouter = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState();
   const [info, setInfo] = useState(initialValues);
   const handleSubmit = (e) => {
     // e.preventDefault();
     setInfo(initialValues);
-    AddUser(info);
+    AddUser(info, email);
     navigate("/");
   };
   return (
@@ -27,7 +28,10 @@ const AppRouter = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Dashboard />} />
-        <Route path="login" element={<Login />} />
+        <Route
+          path="login"
+          element={<Login setEmail={setEmail} email={email} />}
+        />
 
         <Route path="register" element={<Register />} />
         <Route path="details" element={<Details />} />

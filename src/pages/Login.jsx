@@ -17,6 +17,7 @@ import "../App";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signIn, signUpProvider } from "../helpers/firebase";
+import { AddUser, AddUser1 } from "../helpers/functions";
 function Copyright(props) {
   return (
     <Typography
@@ -37,10 +38,10 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignIn() {
+export default function SignIn({ setEmail, email }) {
   const navigate = useNavigate();
-  const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+
   const handleLogin = (e) => {
     e.preventDefault();
     signIn(email, password, navigate);
