@@ -1,6 +1,7 @@
 import { Grid } from "@mui/material";
 import React from "react";
 import BlogCard from "../components/BlogCard";
+import Details from "./Details";
 import Box from "@mui/material/Box";
 import { useFetch, useFetch1 } from "../helpers/functions";
 import { getInfo } from "../helpers/firebase";

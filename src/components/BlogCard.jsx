@@ -20,7 +20,10 @@ import MarkChatReadIcon from "@mui/icons-material/MarkChatRead";
 import { getInfo, signIn } from "../helpers/firebase";
 import { BlogContext } from "../contexts/BlogContext";
 import { useContext } from "react";
-
+import placeholder from "../assets/placeholder.png";
+import { useNavigate } from "react-router-dom";
+import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
+import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -32,9 +35,13 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function RecipeReviewCard({ title, img, content, email }) {
+export default function RecipeReviewCard({ title, img, content, email, id }) {
   // const { email } = getInfo();
-
+  const navigate = useNavigate();
+  const info = [
+    { title: title, img: img, content: content, id: id, email: email },
+  ];
+  console.log(info);
   const [expanded, setExpanded] = React.useState(false);
   // const { email } = useContext(BlogContext);
   // console.log(email);
@@ -43,29 +50,63 @@ export default function RecipeReviewCard({ title, img, content, email }) {
   };
 
   return (
-    <Card sx={{ width: 400, m: 3 }}>
-      <CardHeader />
-      <CardMedia component="img" height="194" image={img} alt="Paella dish" />
-      <CardContent style={{ backgroundColor: "#E7E6F5" }}>
-        <Typography variant="body2" color="text.secondary">
-          {title}
-        </Typography>
+    <Card sx={{ width: 400, m: 3 }} className="card-content">
+      {info.map((item) => {
+        const { title, img, content, id, email } = item;
+        return (
+          <>
+            <CardHeader />
 
-        <Typography variant="body2" color="text.secondary">
-          {content}
-        </Typography>
-      </CardContent>
-      <Typography variant="body2" color="text.secondary">
-        {email}
-      </Typography>
+            <CardMedia
+              component="img"
+              height="194"
+              image={img}
+              alt={title}
+              onClick={() => navigate(`details/${id}`, { state: item })}
+            />
+
+            <CardContent onClick={() => navigate(`details/${id}`)}>
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{
+                  fontSize: "1.2rem",
+                  color: "black",
+                  textTransform: "uppercase",
+                  mb: 2,
+                }}
+              >
+                {title}
+              </Typography>
+
+              <Typography variant="body2" color="text.secondary">
+                {content}
+              </Typography>
+
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{
+                  fontSize: "1.2rem",
+                  color: "black",
+                }}
+              >
+                <AccountCircleRoundedIcon /> {email}
+              </Typography>
+            </CardContent>
+          </>
+        );
+      })}
+
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
-          <FavoriteIcon /> 0
-        </IconButton>
-
+          <FavoriteIcon />
+        </IconButton>{" "}
+        0
         <IconButton aria-label="add to favorites">
-          <MarkChatReadIcon /> 0
-        </IconButton>
+          <ModeCommentOutlinedIcon />
+        </IconButton>{" "}
+        0
       </CardActions>
     </Card>
   );

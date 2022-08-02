@@ -34,7 +34,9 @@ const AppRouter = () => {
         />
 
         <Route path="register" element={<Register />} />
-        <Route path="details" element={<Details />} />
+        <Route path="details/:id" element={<PrivateRouter />}>
+          <Route path="" element={<Details />} />
+        </Route>
 
         <Route path="profile" element={<Profile />} />
         <Route
