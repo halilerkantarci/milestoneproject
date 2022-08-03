@@ -13,7 +13,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import blog from "../assets/blok.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createUser, signUpProvider } from "../helpers/firebase";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -26,6 +26,10 @@ export default function UpdateBlog({ info, setInfo, handleSubmit }) {
     const { name, value } = e.target;
     setInfo({ ...info, [name]: value });
   };
+  useEffect(() => {
+    setInfo(state);
+  }, []);
+
   console.log(info);
   return (
     <ThemeProvider theme={theme}>
@@ -90,7 +94,7 @@ export default function UpdateBlog({ info, setInfo, handleSubmit }) {
                 id="title"
                 label="Title"
                 name="title"
-                value={`${state.title}${info.title}`}
+                value={info.title}
                 autoComplete="title"
                 autoFocus
                 sx={{ width: "350px" }}
@@ -101,7 +105,7 @@ export default function UpdateBlog({ info, setInfo, handleSubmit }) {
                 required
                 fullWidth
                 name="img"
-                value={state.img}
+                value={info.img}
                 label="Image URL"
                 type="text"
                 id="imageURL"
@@ -114,7 +118,7 @@ export default function UpdateBlog({ info, setInfo, handleSubmit }) {
                 floatingLabelText="MultiLine and FloatingLabel"
                 fullWidth
                 name="content"
-                value={state.content}
+                value={info.content}
                 label="Content"
                 type="info"
                 id="info"
