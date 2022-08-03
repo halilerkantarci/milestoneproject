@@ -38,6 +38,7 @@ const ExpandMore = styled((props) => {
 export default function RecipeReviewCard({ title, img, content, email, id }) {
   // const { email } = getInfo();
   const navigate = useNavigate();
+  const [readMore, setReadMore] = React.useState(false);
   const info = [
     { title: title, img: img, content: content, id: id, email: email },
   ];
@@ -65,7 +66,9 @@ export default function RecipeReviewCard({ title, img, content, email, id }) {
               onClick={() => navigate(`details/${id}`, { state: item })}
             />
 
-            <CardContent onClick={() => navigate(`details/${id}`)}>
+            <CardContent
+              onClick={() => navigate(`details/${id}`, { state: item })}
+            >
               <Typography
                 variant="body2"
                 color="text.secondary"
@@ -80,7 +83,7 @@ export default function RecipeReviewCard({ title, img, content, email, id }) {
               </Typography>
 
               <Typography variant="body2" color="text.secondary">
-                {content}
+                {`${content.substring(0, 150)}...`}
               </Typography>
 
               <Typography

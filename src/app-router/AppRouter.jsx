@@ -11,6 +11,7 @@ import Register from "../pages/Register";
 import PrivateRouter from "./PrivateRouter";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
+import UpdateBlog from "../pages/UpdateBlog";
 
 const initialValues = { title: "", img: "", content: "" };
 
@@ -55,6 +56,16 @@ const AppRouter = () => {
           }
         />
         <Route path="logout" element={<Login />} />
+        <Route
+          path="updateblog"
+          element={
+            <UpdateBlog
+              info={info}
+              setInfo={setInfo}
+              handleSubmit={handleSubmit}
+            />
+          }
+        />
       </Routes>
     </>
   );
