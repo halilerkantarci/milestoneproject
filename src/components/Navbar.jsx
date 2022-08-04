@@ -61,7 +61,7 @@ const Navbar = () => {
         width: "100%",
       }}
     >
-      <Container maxWidth="xl">
+      <Container maxWidth="xxl">
         <Toolbar
           disableGutters
           sx={{
@@ -77,26 +77,6 @@ const Navbar = () => {
               style={{ width: "50px", height: "50px", marginTop: "1rem" }}
             />
           </Box>
-
-          {/* <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              // mr: 2,
-              // display: { xs: "none", md: "flex" },
-              // justifyContent: "center",
-              // textAlign: "center",
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            {` <gultekin/> Blog`}
-          </Typography> */}
 
           <Box sx={{ flexGrow: 1, display: "flex" }}>
             <IconButton
