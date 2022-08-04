@@ -16,16 +16,29 @@ import blog from "../assets/blok.png";
 import { useState, useEffect } from "react";
 import { createUser, signUpProvider } from "../helpers/firebase";
 import { useLocation, useNavigate } from "react-router-dom";
+import { UpdateUser } from "../helpers/functions";
 
 const theme = createTheme();
 
-export default function UpdateBlog({ info, setInfo, handleSubmit }) {
+export default function UpdateBlog({ info, setInfo }) {
+  const navigate = useNavigate();
   const { state } = useLocation();
+  // const z = 1;
+  // const b = 2;
+  // const c = 3;
+  // const [a, setA] = useState({ z, b, c });
+  // console.log(a);
   console.log(state);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setInfo({ ...info, [name]: value });
   };
+
+  const handleSubmit = () => {
+    UpdateUser(info);
+    navigate("/");
+  };
+
   useEffect(() => {
     setInfo(state);
   }, []);
@@ -60,82 +73,89 @@ export default function UpdateBlog({ info, setInfo, handleSubmit }) {
         // }}
         >
           <CssBaseline />
-          <Box
-            sx={{
-              marginTop: 8,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <Avatar
+          <form action="" onSubmit={handleSubmit}>
+            <Box
               sx={{
-                m: 1,
-                bgcolor: "primary.dark",
-                height: "250px",
-                width: "250px",
+                marginTop: 8,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
               }}
             >
-              <img src={blog} />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              ── UPDATE BLOG ──
-            </Typography>
-            <Box
-              component="form"
-              //   onSubmit={null}
-              noValidate
-              sx={{ m: 1, display: "flex", flexDirection: "column", gap: "2" }}
-            >
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="title"
-                label="Title"
-                name="title"
-                value={info.title}
-                autoComplete="title"
-                autoFocus
-                sx={{ width: "350px" }}
-                onChange={handleChange}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="img"
-                value={info.img}
-                label="Image URL"
-                type="text"
-                id="imageURL"
-                autoComplete="text"
-                onChange={handleChange}
-              />
-              <TextField
-                style={{ marginTop: "1rem" }}
-                hintText="Message Field"
-                floatingLabelText="MultiLine and FloatingLabel"
-                fullWidth
-                name="content"
-                value={info.content}
-                label="Content"
-                type="info"
-                id="info"
-                multiline
-                rows={7}
-                onChange={handleChange}
-              />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+              <Avatar
+                sx={{
+                  m: 1,
+                  bgcolor: "primary.dark",
+                  height: "250px",
+                  width: "250px",
+                }}
               >
-                SUBMIT
-              </Button>
+                <img src={blog} />
+              </Avatar>
+              <Typography component="h1" variant="h5">
+                ── UPDATE BLOG ──
+              </Typography>
+              <Box
+                component="form"
+                //   onSubmit={null}
+                noValidate
+                sx={{
+                  m: 1,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "2",
+                }}
+              >
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="title"
+                  label="Title"
+                  name="title"
+                  value={info.title}
+                  autoComplete="title"
+                  autoFocus
+                  sx={{ width: "350px" }}
+                  onChange={handleChange}
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="img"
+                  value={info.img}
+                  label="Image URL"
+                  type="text"
+                  id="imageURL"
+                  autoComplete="text"
+                  onChange={handleChange}
+                />
+                <TextField
+                  style={{ marginTop: "1rem" }}
+                  hintText="Message Field"
+                  floatingLabelText="MultiLine and FloatingLabel"
+                  fullWidth
+                  name="content"
+                  value={info.content}
+                  label="Content"
+                  type="info"
+                  id="info"
+                  multiline
+                  rows={7}
+                  onChange={handleChange}
+                />
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 }}
+                >
+                  SUBMIT
+                </Button>
+              </Box>
             </Box>
-          </Box>
+          </form>
         </Box>
       </Container>
     </ThemeProvider>

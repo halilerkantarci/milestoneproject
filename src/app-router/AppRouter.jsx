@@ -58,13 +58,7 @@ const AppRouter = () => {
         <Route path="logout" element={<Login />} />
         <Route
           path="updateblog"
-          element={
-            <UpdateBlog
-              info={info}
-              setInfo={setInfo}
-              handleSubmit={handleSubmit}
-            />
-          }
+          element={<UpdateBlog info={info} setInfo={setInfo} />}
         />
       </Routes>
     </>

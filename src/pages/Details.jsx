@@ -26,6 +26,7 @@ import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
 import Button from "@mui/material/Button";
 import { AuthContext } from "../contexts/AuthContext";
+import { DeleteUser } from "../helpers/functions";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -60,7 +61,7 @@ export default function RecipeReviewCard({}) {
   return (
     <Box>
       {arraystate.map((item) => {
-        const { title, content, email, img } = item;
+        const { title, content, email, img, id } = item;
         return (
           <>
             <Card sx={{ width: 400, m: 3 }} className="card-content">
@@ -111,7 +112,14 @@ export default function RecipeReviewCard({}) {
             </Card>
             {currentUser.email == state.email && (
               <Box>
-                <Button variant="contained" color="error">
+                <Button
+                  variant="contained"
+                  color="error"
+                  onClick={() => {
+                    DeleteUser(state.id);
+                    navigate("/");
+                  }}
+                >
                   Delete
                 </Button>
                 <Button

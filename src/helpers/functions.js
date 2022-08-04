@@ -1,5 +1,13 @@
 import app from "./firebase";
-import { getDatabase, ref, push, set, onValue } from "firebase/database";
+import {
+  getDatabase,
+  ref,
+  push,
+  set,
+  onValue,
+  update,
+  remove,
+} from "firebase/database";
 import { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 
@@ -7,6 +15,7 @@ export const AddUser = (info, currentUser) => {
   const db = getDatabase(app);
   const userRef = ref(db, "users/");
   const newUserRef = push(userRef);
+  console.log(info);
   set(newUserRef, {
     title: info.title,
     img: info.img,
@@ -42,6 +51,21 @@ export const useFetch = () => {
     });
   }, []);
   return { isLoading, contentList };
+};
+
+export const UpdateUser = (info) => {
+  console.log(info);
+  const db = getDatabase(app);
+  const updates = {};
+  updates["users/" + info.id] = info;
+
+  return update(ref(db), updates);
+};
+
+export const DeleteUser = (id) => {
+  const db = getDatabase(app);
+  const userRef = ref(db, "users/");
+  remove(ref(db, "users/" + id));
 };
 
 // const auth = getAuth();

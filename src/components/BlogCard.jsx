@@ -38,7 +38,6 @@ const ExpandMore = styled((props) => {
 export default function RecipeReviewCard({ title, img, content, email, id }) {
   // const { email } = getInfo();
   const navigate = useNavigate();
-  const [readMore, setReadMore] = React.useState(false);
   const info = [
     { title: title, img: img, content: content, id: id, email: email },
   ];
