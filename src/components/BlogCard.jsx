@@ -24,6 +24,8 @@ import placeholder from "../assets/placeholder.png";
 import { useNavigate } from "react-router-dom";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
+import { toastWarnNotify } from "../helpers/toastNotify";
+import { AuthContext } from "../contexts/AuthContext";
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -38,6 +40,8 @@ const ExpandMore = styled((props) => {
 export default function RecipeReviewCard({ title, img, content, email, id }) {
   // const { email } = getInfo();
   const navigate = useNavigate();
+  const { currentUser } = useContext(AuthContext);
+
   const info = [
     { title: title, img: img, content: content, id: id, email: email },
   ];
@@ -63,7 +67,14 @@ export default function RecipeReviewCard({ title, img, content, email, id }) {
               height="194"
               image={img}
               alt={title}
-              onClick={() => navigate(`details/${id}`, { state: item })}
+              onClick={() => {
+                if (currentUser) {
+                  navigate(`details/${id}`, { state: item });
+                } else {
+                  toastWarnNotify("please log in");
+                  navigate(`details/${id}`, { state: item });
+                }
+              }}
             />
 
             <CardContent
