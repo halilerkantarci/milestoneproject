@@ -95,7 +95,7 @@ const Navbar = () => {
             component="a"
             onClick={() => navigate("/")}
             sx={{
-              mr: 18,
+              mr: 100,
               display: "flex",
               // flexGrow: { xs: "none" },
               fontFamily: "monospace",
@@ -105,7 +105,7 @@ const Navbar = () => {
               textDecoration: "none",
             }}
           >
-            {`--- <erkantarci/> Blog ---`}
+            {`──── <erkantarci/> Blog ────`}
           </Typography>
           {/* <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}></Box> */}
 

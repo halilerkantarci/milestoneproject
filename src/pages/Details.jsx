@@ -64,26 +64,36 @@ export default function RecipeReviewCard({}) {
         const { title, content, email, img, id } = item;
         return (
           <>
-            <Card sx={{ width: 400, m: 3 }} className="card-content">
+            <Card sx={{ width: 2080, m: 3 }} className="card-content">
               <CardHeader />
 
-              <CardMedia component="img" height="194" image={img} alt="" />
+              <CardMedia component="img" height="394" image={img} alt="" />
 
-              <CardContent>
+              <CardContent sx={{ height: 250 }}>
                 <Typography
                   variant="body2"
                   color="text.secondary"
                   sx={{
-                    fontSize: "1.2rem",
                     color: "black",
                     textTransform: "uppercase",
                     mb: 2,
+                    textAlign: "center",
+                    fontSize: "2rem",
                   }}
                 >
                   {title}
                 </Typography>
 
-                <Typography variant="body2" color="text.secondary">
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{
+                    color: "black",
+                    mb: 2,
+                    fontSize: "1.3rem",
+                    fontWeight: "300",
+                  }}
+                >
                   {content}
                 </Typography>
 
@@ -93,6 +103,7 @@ export default function RecipeReviewCard({}) {
                   sx={{
                     fontSize: "1.2rem",
                     color: "black",
+                    mt: 2,
                   }}
                 >
                   <AccountCircleRoundedIcon /> {email}
@@ -111,10 +122,17 @@ export default function RecipeReviewCard({}) {
               </CardActions>
             </Card>
             {currentUser.email == state.email && (
-              <Box>
+              <Box sx={{ display: "flex", justifyContent: "center" }}>
                 <Button
                   variant="contained"
                   color="error"
+                  sx={{
+                    width: 25,
+                    height: 55,
+                    padding: "2.5rem",
+                    paddingRight: "3rem",
+                    paddingLeft: "3rem",
+                  }}
                   onClick={() => {
                     DeleteUser(state.id);
                     navigate("/");
@@ -124,6 +142,14 @@ export default function RecipeReviewCard({}) {
                 </Button>
                 <Button
                   variant="contained"
+                  sx={{
+                    width: 25,
+                    height: 55,
+                    padding: "2.5rem",
+                    paddingRight: "3rem",
+                    paddingLeft: "3rem",
+                    marginLeft: "3rem",
+                  }}
                   onClick={() => navigate("/updateblog", { state: item })}
                 >
                   Update
