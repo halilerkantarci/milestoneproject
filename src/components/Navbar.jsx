@@ -63,7 +63,7 @@ const Navbar = () => {
         }
       }
     >
-      <Container maxWidth="xl">
+      <Container maxWidth="xxl">
         <Toolbar
           disableGutters
           sx={
