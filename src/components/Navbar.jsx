@@ -54,21 +54,26 @@ const Navbar = () => {
   return (
     <AppBar
       position="static"
-      sx={{
-        // mr: 2,
-        display: "flex",
-        justifyContent: "space-between",
-        width: "100%",
-      }}
+      sx={
+        {
+          // mr: 2,
+          // display: "flex",
+          // justifyContent: "space-between",
+          // width: "100%",
+        }
+      }
     >
-      <Container maxWidth="xxl">
+      <Container maxWidth="xl">
         <Toolbar
           disableGutters
-          sx={{
-            mr: 2,
-            // display: "flex",
-            // justifyContent: "space-between",
-          }}
+          sx={
+            {
+              // mr: 2,
+              // display: "flex",
+              // justifyContent: "space-between",
+            }
+          }
+          className="toolbar"
         >
           <Box sx={{ width: "50px", height: "75px" }} component="a" href="/">
             <img
@@ -78,16 +83,16 @@ const Navbar = () => {
             />
           </Box>
 
-          <Box sx={{ flexGrow: 1, display: "flex" }}>
+          {/* <Box sx={{ flexGrow: 1, display: "" }}>
             <IconButton
-              // size="large"
+              size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit"
             ></IconButton>
-          </Box>
+          </Box> */}
 
           <Typography
             variant="h5"
@@ -95,8 +100,8 @@ const Navbar = () => {
             component="a"
             onClick={() => navigate("/")}
             sx={{
-              mr: 100,
-              display: "flex",
+              // mr: 50,
+              // display: "flex",
               // flexGrow: { xs: "none" },
               fontFamily: "monospace",
               fontWeight: 700,
@@ -105,11 +110,11 @@ const Navbar = () => {
               textDecoration: "none",
             }}
           >
-            {`──── <erkantarci/> Blog ────`}
+            {`<erkantarci/> Blog`}
           </Typography>
           {/* <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}></Box> */}
 
-          <div className="d-flex text white align-items-center">
+          <Box sx={{ display: "flex", color: "white" }}>
             {currentUser ? (
               <>
                 <Box sx={{ flexGrow: 0 }}>
@@ -139,7 +144,13 @@ const Navbar = () => {
                         width: "5rem",
                       }}
                     >
-                      <NavLink to="profile" style={{ textDecoration: "none" }}>
+                      <NavLink
+                        to="profile"
+                        style={{
+                          textDecoration: "none",
+                        }}
+                        className="navlink"
+                      >
                         <Typography textAlign="center" m=".5rem">
                           Profile
                         </Typography>
@@ -214,7 +225,7 @@ const Navbar = () => {
                 </Box>
               </>
             )}
-          </div>
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>

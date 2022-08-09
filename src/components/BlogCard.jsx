@@ -103,6 +103,7 @@ export default function RecipeReviewCard({ title, img, content, email, id }) {
                 sx={{
                   fontSize: "1.2rem",
                   color: "black",
+                  mt: 2,
                 }}
               >
                 <AccountCircleRoundedIcon /> {email}

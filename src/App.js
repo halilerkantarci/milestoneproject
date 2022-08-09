@@ -3,6 +3,7 @@ import AuthContextProvider from "./contexts/AuthContext";
 import { BrowserRouter } from "react-router-dom";
 import BlogContextProvider from "./contexts/BlogContext";
 import { ToastContainer } from "react-toastify";
+import "./App.css";
 function App() {
   return (
     <AuthContextProvider>

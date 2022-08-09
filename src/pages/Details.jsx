@@ -64,12 +64,18 @@ export default function RecipeReviewCard({}) {
         const { title, content, email, img, id } = item;
         return (
           <>
-            <Card sx={{ width: 2080, m: 3 }} className="card-content">
+            <Card sx={{ m: 3 }} className="card-content">
               <CardHeader />
 
-              <CardMedia component="img" height="394" image={img} alt="" />
+              <CardMedia
+                component="img"
+                height="594"
+                image={img}
+                alt=""
+                className="detailsImg"
+              />
 
-              <CardContent sx={{ height: 250 }}>
+              <CardContent sx={{}}>
                 <Typography
                   variant="body2"
                   color="text.secondary"
