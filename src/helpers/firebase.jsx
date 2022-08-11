@@ -57,7 +57,7 @@ export const signIn = async (email, password, navigate) => {
     navigate("/");
     toastSuccessNotify("Logged in successfully!");
   } catch (err) {
-    toastErrorNotify(err.message);
+    // toastErrorNotify(err.message);
   }
 };
 
