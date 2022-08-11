@@ -16,7 +16,9 @@ import blok from "../assets/blok.png";
 import { useState } from "react";
 import "../App";
 import { useNavigate } from "react-router-dom";
-import { createUser } from "../helpers/firebase";
+import { createUser, signUpProvider } from "../helpers/firebase";
+import google from "../assets/google.png";
+
 function Copyright(props) {
   return (
     <Typography
@@ -45,6 +47,9 @@ export default function SignIn() {
     e.preventDefault();
     console.log(email, password);
     createUser(email, password, navigate);
+  };
+  const handleGoogle = () => {
+    signUpProvider(navigate);
   };
 
   return (
@@ -136,6 +141,15 @@ export default function SignIn() {
                 sx={{ mt: 3, mb: 2 }}
               >
                 REGISTER
+              </Button>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mb: 1, backgroundColor: "white", color: "black" }}
+                onClick={handleGoogle}
+              >
+                WITH &nbsp; <img src={google} style={{ width: "75px" }} />
               </Button>
             </Box>
           </Box>

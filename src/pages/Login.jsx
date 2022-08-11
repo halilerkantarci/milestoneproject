@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider, makeStyles } from "@mui/material/styles";
 import blok from "../assets/blok.png";
 import "../App";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { signIn, signUpProvider } from "../helpers/firebase";
 import { AddUser, AddUser1 } from "../helpers/functions";
 import google from "../assets/google.png";
@@ -152,9 +152,11 @@ export default function SignIn({ setEmail, email }) {
               </Button>
               <Grid container>
                 <Grid item>
-                  <Link to="/register" variant="body2">
-                    {"Don't have an account? Sign Up"}
-                  </Link>
+                  <NavLink to="/register" style={{ textDecoration: "none" }}>
+                    <Typography textAlign="center" mb=".5rem">
+                      Don't have an account? Sign Up
+                    </Typography>
+                  </NavLink>
                 </Grid>
               </Grid>
             </Box>
