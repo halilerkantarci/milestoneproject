@@ -18,6 +18,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signIn, signUpProvider } from "../helpers/firebase";
 import { AddUser, AddUser1 } from "../helpers/functions";
+import google from "../assets/google.png";
 function Copyright(props) {
   return (
     <Typography
@@ -147,7 +148,7 @@ export default function SignIn({ setEmail, email }) {
                 sx={{ mb: 1 }}
                 onClick={handleGoogle}
               >
-                WITH GOOGLE
+                WITH GOOGLE &nbsp <img src={google} style={{ width: "75px" }} />
               </Button>
               <Grid container>
                 <Grid item xs>
