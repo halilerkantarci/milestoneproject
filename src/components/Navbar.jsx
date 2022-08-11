@@ -157,7 +157,7 @@ const Navbar = () => {
                       </NavLink>
                       <NavLink to="newblog" style={{ textDecoration: "none" }}>
                         <Typography textAlign="center" mb=".5rem">
-                          New
+                          New Blog
                         </Typography>
                       </NavLink>
                       <NavLink
